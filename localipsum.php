@@ -107,7 +107,7 @@ function makeText($pc = 5, $pl = 2, $sl = 2, $ln = 2, $data) {
 	echo "</div>\n";
 
 	if ($debug) {
-		echo "<pre>" . var_dump($array) . "</pre>";
+		// echo "<pre>" . var_dump($array) . "</pre>";
 	}
 
 }
