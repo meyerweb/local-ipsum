@@ -28,7 +28,7 @@ $array = loadData();
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title><?php echo $array["title"] ?></title>
+<title><?php if ($array["title"]) echo $array["title"]; else echo "Local Ipsum"; ?></title>
 <style type="text/css">
 
 body {padding: 2em;	font: 95% Helvetica, sans-serif;}
@@ -69,7 +69,7 @@ ol + p input {font-weight: bold;}
 </head>
 <body>
 
-<h1><?php echo $array["title"] ?></h1>
+<?php if ($array["title"]) { echo "<h1>" . $array["title"] . "</h1>"; ?>
 
 <form method="get">
 
@@ -108,7 +108,8 @@ ol + p input {font-weight: bold;}
 
 <?php
 
-if ($submitted) makeText($pc, $pl, $sl, $ln, $array);
+	if ($submitted) makeText($pc, $pl, $sl, $ln, $array);
+}
 
 ?>
 

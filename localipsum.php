@@ -4,11 +4,16 @@
 function loadData($fname = "local.txt") {
 	$dir = "./";
 
-	$fs=fopen($dir.$fname, "r");
-	while (!feof($fs)) {
-	    $array[] = trim(fgets($fs));
+	if (file_exists($dir.$fname)) {
+		$fs=fopen($dir.$fname, "r");
+		while (!feof($fs)) {
+		    $array[] = trim(fgets($fs));
+		}
+		fclose($fs);
+	} else {
+		echo "Unrecoverable error: <tt>" . $dir.$fname. "</tt> could not be found.";
+		return false;
 	}
-	fclose($fs);
 
 	$title = array_splice($array, 0, 1)[0];
 	$locale = array_splice($array, 0, 1)[0];
