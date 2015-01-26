@@ -23,6 +23,7 @@ function loadData($fname = "local.txt") {
 		$cmtp = strpos($string,'//');
 		if ($cmtp !== false) {
 			$string = substr($string,0,$cmtp);
+			$array[$a] = $string;
 		}
 		if ($string == '') {
 			array_splice($array, $a, 1);
