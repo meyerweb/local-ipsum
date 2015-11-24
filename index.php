@@ -18,9 +18,10 @@ if (isset($_GET['pc'])) {
 (isset($_GET['sl']) ? $sl = $_GET['sl'] : $sl = 2);
 (isset($_GET['ln']) ? $ln = $_GET['ln'] : $ln = 2);
 (isset($_GET['lf']) ? $lf = $_GET['lf'] : $lf = '');
+(isset($_GET['l']) ? $l = $_GET['l'] : $l = 'Cleveland');
 
 include("localipsum.php");
-$array = loadData();
+$array = ($l ? loadData('localities/' . $l . '.txt') : Array('title'=> 'Local Ipsum'));
 
 ?>
 
@@ -74,6 +75,16 @@ ol + p input {font-weight: bold;}
 <form method="get">
 
 <ol>
+<li><label for="l">What city do you want?</label>
+<select id="l" name="l">
+<?php
+foreach(glob('localities/*.txt') as $localityFile){
+	$locality = basename($localityFile, '.txt');
+?>
+	<option<?php if($l === $locality){ echo " selected"; } ?>><?=$locality?></option>
+<?php } ?>
+</select>
+</li>
 <li><label for="pc">How many paragraphs do you want?</label>
 <input type="text" value="<?php echo $pc; ?>" size="3" maxlength="2" name="pc" id="pc"></li>
 <li>How long should paragraphs be?

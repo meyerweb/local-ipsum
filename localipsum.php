@@ -1,7 +1,7 @@
 <?php
 
 
-function loadData($fname = "local.txt") {
+function loadData($fname = "localities/Cleveland.txt") {
 	$dir = "./";
 
 	if (file_exists($dir.$fname)) {
